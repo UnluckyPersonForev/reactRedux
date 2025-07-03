@@ -1,0 +1,22 @@
+@import url(../no-margind.css);
+.news__container {
+    padding: 20px 0;
+}
+.news__title {
+    font-size: 4rem;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600;
+    padding-bottom: 40px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+.news__list {
+    /* display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px,  1fr)); */
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 20px;
+    column-gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
