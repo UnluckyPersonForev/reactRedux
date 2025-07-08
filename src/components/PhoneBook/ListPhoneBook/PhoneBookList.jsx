@@ -1,24 +1,24 @@
 import s from "./PhoneBook.module.css";
 import { useSelector } from "react-redux";
 function PhoneBookList() {
-    const { contacts, filterQuery } = useSelector((state) => state.phoneBook);
+    const { isLoading, error, items } = useSelector(
+        (state) => state.phoneBook.contacts
+    );
+    const filter = useSelector((state) => state.phoneBook.filter);
 
-    console.log(contacts);
-    const filteredContacts = contacts.filter((item) =>
-        item.name.toUpperCase().includes(filterQuery.toUpperCase())
+    const filteredContacts = items.filter((item) =>
+        item.name.toUpperCase().includes(filter.toUpperCase())
     );
 
     return (
         <>
             <ul className="phonebook_list">
-                <li className="phonebook_item">
-                    {filteredContacts.map((item) => (
-                        <li key={item.id}>
-                            <div className="item_name">{item.name}</div>
-                            <div className="item_number">{item.number}</div>
-                        </li>
-                    ))}
-                </li>
+                {filteredContacts.map((item) => (
+                    <li key={item.id} className="phonebook_item">
+                        <div className="item_name">{item.name}</div>
+                        <div className="item_number">{item.number}</div>
+                    </li>
+                ))}
             </ul>
         </>
     );

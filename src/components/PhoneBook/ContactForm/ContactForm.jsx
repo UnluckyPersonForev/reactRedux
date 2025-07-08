@@ -1,12 +1,12 @@
 import { useState } from "react";
 import s from "./ContactForm.module.css";
 import { useDispatch } from "react-redux";
-import { addContact } from "../../../app/phoneBook/phoneBookSlice";
+import { addContact } from "../../../app/phoneBook/phoneBookThunk";
 import { useSelector } from "react-redux";
 function ContactForm() {
     const [name, setName] = useState("");
     const [number, setNumber] = useState("");
-    const contacts = useSelector((state) => state.phoneBook.contacts);
+    const contacts = useSelector((state) => state.phoneBook.contacts.items);
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -15,7 +15,7 @@ function ContactForm() {
                 return;
             }
         }
-        dispatch(addContact(name, number));
+        dispatch(addContact({ name, number }));
         setName("");
         setNumber("");
     };

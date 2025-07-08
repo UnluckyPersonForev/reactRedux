@@ -4,7 +4,7 @@ import { setFilter } from "../../app/phoneBook/phoneBookSlice";
 import { useDispatch } from "react-redux";
 function Filter() {
     const dispatch = useDispatch();
-    const filter = useSelector((state) => state.phoneBook.filterQuery);
+    const filter = useSelector((state) => state.phoneBook.filter);
     const handleInputChange = (event) => {
         dispatch(setFilter(event.target.value));
     };
