@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getTopNewsThunk } from "../../app/news/newsThunk";
 import NewsItem from "./NewsItem";
 import s from "./NewsList.module.css";
+import { nanoid } from "@reduxjs/toolkit";
 function NewsList() {
     const dispatch = useDispatch();
     useEffect(() => {
@@ -17,7 +18,7 @@ function NewsList() {
                 {news && (
                     <ul className={s.news__list}>
                         {news.map((item) => (
-                            <NewsItem news={item} />
+                            <NewsItem news={item} key={nanoid()} />
                         ))}
                     </ul>
                 )}

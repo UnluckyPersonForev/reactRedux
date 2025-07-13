@@ -12,11 +12,11 @@ const handleRejected = (state, action) => {
 };
 
 const fetchContactFulfiled = (state, action) => {
-    state.contacts.items = action.payload;
+    state.contacts.items = action.payload.data ?? action.payload;
     state.contacts.isLoading = false;
 };
 const addContactFulfiled = (state, action) => {
-    state.contacts.items.push(action.payload);
+    state.contacts.items.push(action.payload.data ?? action.payload);
     state.contacts.isLoading = false;
 };
 const deleteContactFulfiled = (state, action) => {

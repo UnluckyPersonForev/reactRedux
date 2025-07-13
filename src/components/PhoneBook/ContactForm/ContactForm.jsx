@@ -7,7 +7,7 @@ function ContactForm() {
     const [name, setName] = useState("");
     const [number, setNumber] = useState("");
     const contacts = useSelector((state) => state.phoneBook.contacts.items);
-
+    const dispatch = useDispatch();
     const handleSubmit = (event) => {
         event.preventDefault();
         for (let item of contacts) {
@@ -15,12 +15,11 @@ function ContactForm() {
                 return;
             }
         }
-        dispatch(addContact({ name, number }));
+        dispatch(addContact({ name, phone: number }));
         setName("");
         setNumber("");
     };
 
-    const dispatch = useDispatch();
     return (
         <form className="contact__form" onSubmit={handleSubmit}>
             <input
